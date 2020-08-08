@@ -13,15 +13,29 @@ order by hire_date;
 
 -- 3. List the manager of each department with the following information:
 -- 		department number, department name, the manager's employee number, last name, first name.
-
+select d.dept_no, d.dept_name, m.emp_no, e.last_name, e.first_name
+from departments as d
+inner join dept_manager as m on
+d.dept_no = m.dept_no
+inner join employees as e on
+m.emp_no = e.emp_no;
 
 -- 4. List the department of each employee with the following information:
 --		employee number, last name, first name, and department name.
 
+-- *** even those without a department name?
+select e.emp_no, e.last_name, e.first_name, d.dept_name
+from employees as e 
+full outer join dept_manager as m on
+e.emp_no = m.emp_no
+full outer join departments as d on
+m.dept_no = d.dept_no;
 
 -- 5. List first name, last name, and sex for employees
 -- 		whose first name is "Hercules" and last names begin with "B."
-
+select first_name, last_name, sex
+from employees
+where first_name = 'Hercules' and last_name like 'B%';
 
 -- 6. List all employees in the Sales department,
 --		including their employee number, last name, first name, and department name.
