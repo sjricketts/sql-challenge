@@ -23,12 +23,11 @@ m.emp_no = e.emp_no;
 -- 4. List the department of each employee with the following information:
 --		employee number, last name, first name, and department name.
 
--- *** even those without a department name?
 select e.emp_no, e.last_name, e.first_name, d.dept_name
 from employees as e 
-full outer join dept_manager as m on
+inner join dept_emp as m on
 e.emp_no = m.emp_no
-full outer join departments as d on
+inner join departments as d on
 m.dept_no = d.dept_no;
 
 -- 5. List first name, last name, and sex for employees
