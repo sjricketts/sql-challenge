@@ -2,7 +2,7 @@
 --		employee number, last name, first name, sex, and salary.
 select e.emp_no, e.last_name, e.first_name, e.sex, s.salary 
 from employees as e
-inner join salaries as s on
+left join salaries as s on
 e.emp_no = s.emp_no;
 
 -- 2. List first name, last name, and hire date for employees who were hired in 1986.
@@ -54,7 +54,7 @@ inner join dept_emp on
 e.emp_no = dept_emp.emp_no
 inner join departments as d on
 dept_emp.dept_no = d.dept_no
-where d.dept_name = 'Sales' or d.dept_name = 'Development';
+where d.dept_name in ('Sales', 'Development');
 
 -- 8. In descending order, list the frequency count of employee last names,
 --		i.e., how many employees share each last name.
